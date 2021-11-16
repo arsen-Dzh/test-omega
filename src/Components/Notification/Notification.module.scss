@@ -1,0 +1,11 @@
+.notification {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(37, 3, 44, 0.856);
+  color: white;
+  padding: 10px 40px;
+  position: absolute;
+  left: 46vw;
+  top: 7vh;
+  z-index: 10;
+}

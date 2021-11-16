@@ -1,7 +1,9 @@
+import ListCard from "../ListCard/ListCard";
+
 function App() {
   return (
     <div>
-      тестовое
+      <ListCard />
     </div>
   );
 }
