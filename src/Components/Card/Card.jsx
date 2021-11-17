@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { buyCardAC, removeCardAC } from '../../redux/actionCreators/cardsAC'
+import { notificationAC } from '../../redux/actionCreators/notificationAC';
 import styles from './Card.module.scss';
 
 function Card({ item }) {
@@ -8,8 +9,8 @@ function Card({ item }) {
 
 
   const removeHandler = () => {
-    dispatch(removeCardAC(item.id))
-    dispatch({type: 'STATUS', payload: `Вы удалили ${item.name}`})
+    dispatch(removeCardAC(item.id))    
+    dispatch(notificationAC(`Вы удалили ${item.name}`))
     setTimeout(() => {
       dispatch({type: 'STATUS', payload: ''})
     }, 1500)
@@ -17,7 +18,10 @@ function Card({ item }) {
 
   const buyHandler = () => {
     dispatch(buyCardAC(item.id))
-    dispatch({type: 'STATUS', payload: `Вы купили ${item.name}`})
+
+    const option = item.status ? 'продали' : 'купили'
+
+    dispatch(notificationAC(`Вы ${option} ${item.name}`))
     setTimeout(() => {
       dispatch({type: 'STATUS', payload: ''})
     }, 1500)
